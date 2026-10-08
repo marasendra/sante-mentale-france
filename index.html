@@ -2569,7 +2569,7 @@
   const capChip = document.getElementById("capChip");
   const capText = document.getElementById("capText");
   function buildLegend() {
-    legend.innerHTML = '<span class="lg-title">Classes d\'âge<small>du plus jeune au plus âgé</small></span>';
+    legend.innerHTML = '<span class="lg-title">Classes d\'âge</span>';
     AGES.forEach((a, i) => {
       const el = document.createElement("span");
       el.className = "chip"; el.style.setProperty("--c", "var(--age-" + i + ")");
