@@ -1242,7 +1242,7 @@
     H: [
       () => B("Comment lire ce graphique.") + "Chaque point représente un groupe de personnes de même sexe, même classe d'âge et habitant dans une même région, outre-mer compris (" + N + " régions). Plus il est haut, plus la part de patients hospitalisés pour geste auto-infligé est élevée (taux pour 100 000 habitants).",
       () => { const s = stats("H", 0), d = detached("H", 0, 1), a = above("H", 0, 1);
-        return B("Alerte : les filles de 11-17 ans sont le profil le plus à risque d'hospitalisation.") + "Médiane des " + N + " régions : " + f0(s.mf) + " patients hospitalisés pour 100 000 filles, soit " + xr(s.r) + " le taux des garçons (" + f0(s.mh) + "). Se détachent : " + lst("H", d.pts) + "." + (a.length === 1 ? " " + cap(la(a[0])) + " est le seul DROM au-dessus de la médiane." : ""); },
+        return B("Alerte : les filles de 11-17 ans sont le profil le plus à risque d'hospitalisation.") + "Médiane des " + N + " régions : " + f0(s.mf) + " patients hospitalisés pour 100 000 filles, soit " + xr(s.r) + " le taux des garçons (" + f0(s.mh) + "). Se détachent : " + lst("H", d.pts) + "."; },
       () => { const s = stats("H", 1), d = detached("H", 1, 1), n = above("H", 1, 0).length + above("H", 1, 1).length;
         return B("18-24 ans : le risque reste élevé chez les jeunes femmes.") + f0(s.mf) + " patients hospitalisés pour 100 000 femmes, contre " + f0(s.mh) + " pour 100 000 hommes (" + xr(s.r) + "). Se détachent chez les femmes : " + lst("H", d.pts) + "."; },
       () => { const s = stats("H", 2), d = detached("H", 2, 0), ah = above("H", 2, 0), af = above("H", 2, 1), same = f0(s.mf) === f0(s.mh);
