@@ -1557,7 +1557,7 @@
       " (" + pc(B.r) + "). Pendant ce temps, celles des " + s45.name + " baissent (" + pc(s45.r) + ") : l'écart entre les deux classes d'âge est passé de " + f0(s45.v[0] - B.v[0]) + " à " + f0(s45.v[LAST] - B.v[LAST]) + " hospitalisations.",
     () => "<strong>Deux classes d'âge portent la hausse : les " + A.name + " (" + xr(A.r) + ") et les " + B.name + " (" + xr(B.r) + ").</strong> Les femmes de " + A.short.split("-")[0] + " à " + B.short.split("-")[1] +
       " ans comptaient pour " + f0(share(0) * 100) + " % des hospitalisations de femmes en " + YEARS[0] + ", contre " + f0(share(LAST) * 100) + " % en " + YEARS[LAST] +
-      " : presque une sur deux. À partir de 25 ans, le nombre d'hospitalisations est resté constant de 2019 à 2024."
+      " : presque une sur deux. À partir de 25 ans, le nombre d'hospitalisations est resté constant ou a diminué de 2019 à 2024."
   ];
 
   /* ---------- infobulle ---------- */
@@ -2119,7 +2119,7 @@
       { name: "Ménage d'une seule personne", full: "Ménage d'une seule personne" },
       { name: "Autres", full: "Autres types de ménage", dash: "5 4" }
     ],
-    steps: ["Vue d'ensemble", "Les couples", "Hommes seuls", "Femmes", "À retenir"],
+    steps: ["Vue d'ensemble", "Les couples", "Hommes", "Femmes", "À retenir"],
     view: J => [
       { focus: [], label: [], dim: {} },
       { focus: [0, 1], label: [], dim: {} },
@@ -2130,8 +2130,8 @@
     caps: [
       () => "<strong>Le Baromètre, selon le type de ménage.</strong> Chaque axe est un indicateur, chaque ligne un type de ménage : plus elle s'éloigne du centre, plus la part de personnes concernées est élevée. Hommes à gauche, femmes à droite, même échelle. L'indicateur « A souffert psychologiquement d'un évènement climatique extrême » n'est pas disponible par type de ménage.",
       () => "<strong>Les couples sont les moins touchés.</strong> Avec ou sans enfant, ils ont les deux valeurs les plus basses sur " + nLow + " mesures sur " + nMeas + " (4 indicateurs, hommes et femmes). Les pensées suicidaires concernent " + p1(MD.h[0][0]) + " et " + p1(MD.h[1][0]) + " des hommes en couple, " + p1(MD.f[0][0]) + " et " + p1(MD.f[1][0]) + " des femmes.",
-      () => "<strong>Les hommes seuls sont le profil masculin le plus à risque.</strong> Ils sont en tête sur " + topsH3 + " indicateurs sur " + NI + " : " + p1(MD.h[3][0]) + " de pensées suicidaires, " + p1(MD.h[3][1]) + " de tentatives, " + p1(MD.h[3][3]) + " d'épisode dépressif. C'est " + rr("h", 0) + " fois plus de pensées et " + rr("h", 1) + " fois plus de tentatives que chez les hommes en couple.",
-      () => "<strong>Chez les femmes, les familles monoparentales sont les plus touchées par l'anxiété et la dépression.</strong> " + p1(MD.f[2][2]) + " déclarent un trouble anxieux généralisé et " + p1(MD.f[2][3]) + " un épisode dépressif caractérisé. Les femmes seules déclarent le plus de tentatives de suicide : " + p1(MD.f[3][1]) + "."
+      () => "<strong>Chez les hommes, les hommes seuls sont le profil le plus à risque.</strong> Ils sont en tête sur " + topsH3 + " indicateurs sur " + NI + " : " + p1(MD.h[3][0]) + " de pensées suicidaires, " + p1(MD.h[3][1]) + " de tentatives, " + p1(MD.h[3][3]) + " d'épisode dépressif. C'est " + rr("h", 0) + " fois plus de pensées et " + rr("h", 1) + " fois plus de tentatives que chez les hommes en couple.",
+      () => "<strong>Chez les femmes, les familles monoparentales et les femmes seules sont les plus touchées par l'anxiété et la dépression.</strong> " + p1(MD.f[2][2]) + " déclarent un trouble anxieux généralisé et " + p1(MD.f[2][3]) + " un épisode dépressif caractérisé. Les femmes seules déclarent le plus de tentatives de suicide : " + p1(MD.f[3][1]) + "."
     ],
     dual: true,                                                                                                   // deux encarts (hommes, femmes) au lieu d'un seul
     note: () => {                                                                                                  // tentatives de suicide : ménage d'une personne vs couples (avec ou sans enfant)
