@@ -1241,7 +1241,7 @@
         return B("45-64 ans : un niveau plus bas.") + f0(s.mf) + " patients hospitalisés pour 100 000 femmes, " + f0(s.mh) + " pour 100 000 hommes. Les hommes " + de(d.pts[0].n) + " se détachent encore (" + f0(d.pts[0].v) + ")."; },
       () => { const s = stats("H", 4);
         return B("65 ans et plus : le risque d'hospitalisation le plus faible.") + f0(s.mf) + " patients hospitalisés pour 100 000 femmes, " + f0(s.mh) + " pour 100 000 hommes. Plus aucune région ne se détache."; },
-      () => B("À retenir : les jeunes filles sont la population la plus à risque d'hospitalisation pour geste auto-infligé.") + "Le risque est maximal à 11-17 ans, puis il baisse à chaque classe d'âge. Les Hauts-de-France sortent en premier à chaque âge, chez les femmes comme chez les hommes. Les DROM sont sous la médiane, sauf La Réunion à 11-17 et 25-44 ans."
+      () => B("À retenir : les jeunes filles sont la population la plus à risque d'hospitalisation pour geste auto-infligé.") + "Le risque est maximal à 11-17 ans, puis il baisse à chaque classe d'âge. Les Hauts-de-France sortent en premier à chaque âge, chez les femmes comme chez les hommes."
     ],
     S: [
       () => B("Même lecture, autre échelle."),
@@ -1259,7 +1259,7 @@
       () => { const s = stats("S", 4), d = detached("S", 4, 0);
         return B("Alerte : les hommes de 65 ans et plus sont le profil le plus à risque de suicide.") + f1(s.mh) + " suicides pour 100 000 hommes, soit " + xr(1 / s.r) + " le taux des femmes (" + f1(s.mf) + "). " + cap(la(d.pts[0].n)) + " se détache encore : " + f1(d.pts[0].v) + ", loin devant la deuxième région (" + f1(d.next.v) + ")."; },
       () => { const peak = n => TAUX.S[n].map(r => r[0]).indexOf(Math.max.apply(null, TAUX.S[n].map(r => r[0]))), metro = names.filter(n => !isD(n)), pm = metro.filter(n => peak(n) === 4).length, pd = DROM.filter(n => peak(n) === 4).length;
-        return B("À retenir : chez les hommes, le risque de suicide augmente à chaque classe d'âge.") + "Il est maximal à 65 ans et plus dans " + pm + " des " + metro.length + " régions métropolitaines" + (pd === 0 ? ", mais dans aucun DROM, où le pic arrive plus tôt" : "") + ". Dès 25 ans, la Bretagne sort en premier chez les hommes."; }
+        return B("À retenir : chez les hommes, le risque de suicide augmente à chaque classe d'âge.") + "Il est maximal à 65 ans et plus dans " + pm + " des " + metro.length + " régions métropolitaines. " + "Dès 25 ans, la Bretagne sort en premier chez les hommes."; }
     ]
   };
   // pas où le texte passe en « alerte » (fond teinté + liseré de la couleur du profil)
@@ -1944,7 +1944,7 @@
   const fMid = [1, 2, 3].map(a => DATA.f[a][0]), rLo = fy[0] / Math.max.apply(null, fMid), rHi = fy[0] / Math.min.apply(null, fMid);
   const tr = SHORT.map((_, a) => DATA.f[a][1] / DATA.h[a][1]), trMin = Math.min.apply(null, tr), trMax = Math.max.apply(null, tr);
   const CAPS = [
-    () => "<strong>Le Baromètre, classe d'âge par classe d'âge.</strong> Chaque case donne la part des personnes concernées (%), de 18 à 79 ans, pour les hommes et pour les femmes. Plus la couleur est intense, plus la part est élevée, avec la même échelle pour les hommes et pour les femmes.<span class=\"phonly\"> Ligne « Évènement climatique » : « A souffert psychologiquement d'un évènement climatique extrême ».</span>",
+    () => "<strong>Le Baromètre, classe d'âge par classe d'âge.</strong> Chaque case donne la part des personnes concernées (%), de 18 à 79 ans, pour les hommes et pour les femmes. Plus la couleur est intense, plus la part est élevée.<span class=\"phonly\"> Ligne « Évènement climatique » : « A souffert psychologiquement d'un évènement climatique extrême ».</span>",
     () => "<strong>Les femmes de 18-29 ans sont les plus touchées sur " + topCount + " indicateurs sur " + IND.length + ".</strong> " + p1(fy[0]) + " déclarent des pensées suicidaires au cours des 12 derniers mois, soit " + fr(rLo, 1) + " à " + fr(rHi, 1) + " fois plus que les femmes de 30 à 59 ans. " + p1(fy[3]) + " sont concernées par un épisode dépressif caractérisé.",
     () => "<strong>Après 60 ans, les pensées suicidaires, l'anxiété et la dépression reculent nettement.</strong> L'épisode dépressif caractérisé passe de " + p1(hy[3]) + " à " + p1(DATA.h[5][3]) + " chez les hommes et de " + p1(fy[3]) + " à " + p1(DATA.f[5][3]) + " chez les femmes, entre 18-29 et 70-79 ans.",
     () => "<strong>Les femmes déclarent plus de tentatives de suicide à tous les âges</strong> : de " + xr(trMin) + " à " + xr(trMax) + " selon la classe d'âge. À 60-69 ans, " + p1(DATA.f[4][1]) + " des femmes en déclarent une au cours de leur vie, contre " + p1(DATA.h[4][1]) + " des hommes."
