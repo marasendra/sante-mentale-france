@@ -1252,9 +1252,9 @@
         return B("25-44 ans : les taux de patients hospitalisés des femmes et des hommes " + (Math.abs(s.r - 1) < 0.05 ? "se rejoignent" : "se rapprochent") + ".") + (same ? f0(s.mf) + " pour 100 000, chez les femmes comme chez les hommes." : f0(s.mf) + " pour 100 000 femmes, " + f0(s.mh) + " pour 100 000 hommes.") +
           (t0.n === t1.n ? " " + cap(la(t0.n)) + (/^Hauts/.test(t0.n) ? " présentent" : " présente") + " les taux de patients hospitalisés les plus élevés pour les deux sexes (" + f0(t0.v) + " pour 100 000 hommes, " + f0(t1.v) + " pour 100 000 femmes)." : ""); },
       () => { const s = stats("H", 3), d = detached("H", 3, 0), n = above("H", 3, 0).length + above("H", 3, 1).length;
-        return B("45-64 ans : un niveau plus bas.") + f0(s.mf) + " patients hospitalisés pour 100 000 femmes, " + f0(s.mh) + " pour 100 000 hommes."; },
+        return B("45-64 ans : le nombre d'hospitalisations continue de baisser.") + f0(s.mf) + " patients hospitalisés pour 100 000 femmes, " + f0(s.mh) + " pour 100 000 hommes."; },
       () => { const s = stats("H", 4);
-        return B("65 ans et plus : le risque d'hospitalisation le plus faible.") + f0(s.mf) + " patients hospitalisés pour 100 000 femmes, " + f0(s.mh) + " pour 100 000 hommes. Plus aucune région ne se détache."; },
+        return B("65 ans et plus : le risque d'hospitalisation le plus faible.") + f0(s.mf) + " patients hospitalisés pour 100 000 femmes, " + f0(s.mh) + " pour 100 000 hommes."; },
       () => { const lead = "Hauts-de-France", exc = [];
         [1, 0].forEach(s => AGES.forEach((_, k) => { const t = col("H", k, s).sort((a, b) => b.v - a.v)[0]; if (t.n !== lead) exc.push({ k, s, t, h: TAUX.H[lead][k][s] }); }));   // classes où une autre région passe devant les Hauts-de-France
         const who = e => (e.s ? (e.k <= 1 ? "filles" : "femmes") : (e.k <= 1 ? "garçons" : "hommes")) + " de " + AGES[e.k];
@@ -1275,7 +1275,7 @@
       () => { const s = stats("S", 2), p = stats("S", 1), d = detached("S", 2, 0), nx = col("S", 2, 0).filter(q => q.v === d.next.v);
         return B("25-44 ans : le taux brut de suicide des hommes double.") + f1(s.mh) + " suicides pour 100 000 hommes contre " + f1(s.mf) + " pour les femmes (" + xr(1 / s.r) + "). " + cap(la(d.pts[0].n)) + " se détache : " + f1(d.pts[0].v) + ", loin devant les autres régions."; },
       () => { const s = stats("S", 3), d = detached("S", 3, 0), n = above("S", 3, 0).length + above("S", 3, 1).length;
-        return B("45-64 ans : le risque continue de monter chez les hommes.") + f1(s.mh) + " suicides pour 100 000 hommes, contre " + f1(s.mf) + " pour les femmes (" + xr(1 / s.r) + "). " + cap(la(d.pts[0].n)) + " reste en tête (" + f1(d.pts[0].v) + ", puis " + f1(d.next.v) + ")."; },
+        return B("45-64 ans : le risque continue de monter chez les hommes.") + f1(s.mh) + " suicides pour 100 000 hommes, contre " + f1(s.mf) + " pour les femmes (" + xr(1 / s.r) + "). " + cap(la(d.pts[0].n)) + " reste en tête (" + f1(d.pts[0].v) + ")."; },
       () => { const s = stats("S", 4), d = detached("S", 4, 0);
         return B("Alerte : les hommes de 65 ans et plus sont le profil avec le taux de suicide le plus élevé.") + f1(s.mh) + " suicides pour 100 000 hommes, soit " + xr(1 / s.r) + " le taux des femmes (" + f1(s.mf) + "). " + cap(la(d.pts[0].n)) + " se détache encore : " + f1(d.pts[0].v) + ", loin devant la deuxième région (" + f1(d.next.v) + ")."; },
       () => { const peak = n => TAUX.S[n].map(r => r[0]).indexOf(Math.max.apply(null, TAUX.S[n].map(r => r[0]))), metro = names.filter(n => !isD(n)), pm = metro.filter(n => peak(n) === 4).length, pd = DROM.filter(n => peak(n) === 4).length;
